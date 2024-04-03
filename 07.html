@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <button onclick="Lottery()">產生威力彩號碼</button>
+
+    <script>
+        //1.想想看怎麼從 0 到 100 隨機取一個整數?
+        for (let i = 0; i <= 100; i++) {
+
+            console.log(parseInt(Math.random() * 101))
+        }
+
+
+        //2.製作隨機數字 function，提供最小整數和最大整數，回傳一個區間內的隨機整數
+        const rand = (min, max) => {
+            // 程式碼...
+
+            let RandomMax = Math.floor(Math.random() * (max - min + 1)) + min;
+            let RandomMin = Math.floor(Math.random() * (max - min + 1)) + min;
+
+
+            console.log("Max:" + RandomMax);
+            console.log("Min:" + RandomMin);
+
+
+        }
+        //TEST
+        rand(0, 100);
+
+        /////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+        function GetRandomNumber(min, max) {
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }                                               /*因為max-min會少一個值才要+1*/
+
+        function Lottery() {
+            let aNumbers = [];
+            let bNumber;
+
+            // 產生A區的6個數字
+            while (aNumbers.length < 6) {
+                let randomNumber = GetRandomNumber(1, 38);
+                if (!aNumbers.includes(randomNumber)) {
+                    aNumbers.push(randomNumber);
+                }
+            }
+
+            // 產生B區的1個數字
+            bNumber = GetRandomNumber(1, 8);
+
+            // 將號碼顯示在網頁上
+
+            // 顯示號碼
+            document.write("A區號碼：" + aNumbers.join(", ") + "<br>");
+            document.write("B區號碼：" + bNumber);
+        }
+    </script>
+
+</body>
+
+</html>
